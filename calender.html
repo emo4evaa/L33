@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date and day</title>
+</head>
+
+<body onload="showDate()">
+
+    <h2>Current Time</h2>
+
+    <p id="Mycalander"></p>
+
+    <form id="myForm">
+    </form>
+
+    <ul id="myItems"></ul>
+
+    <script>
+        var myForm = document.getElementById("myForm"); 
+var myInput = document.getElementById("myInput"); 
+var myItems = document.getElementById("myItems"); 
+function showDate() { 
+    var d = new Date(); 
+    var date = d.getDate(); 
+    var month = d.getMonth() + 1; 
+    var year = d.getFullYear(); 
+    var day = d.getDay(); 
+    var today; 
+    if (day == 0) today = "Sunday"; 
+    else if (day == 1) today = "Monday"; 
+    else if (day == 2) today = "Tuesday"; 
+    else if (day == 3) today = "Wednesday"; 
+    else if (day == 4) today = "Thursday"; 
+    else if (day == 5) today = "Friday";
+    else today = "Saturday"; 
+    var calander = "Date: " + date + "/" + month + "/" + year + " Day: " + today;
+    document.getElementById("Mycalander").innerHTML = calander; 
+} 
+myForm.addEventListener("submit", function (event) {
+     event.preventDefault(); createItem(myInput.value); myInput.value = "";
+    });
+function createItem(inputItems) { 
+    var items = "<li>" + inputItems + "</li>"; 
+    myItems.insertAdjacentHTML("beforeend", items);
+} 
+showDate();
+    </script>
+
+</body>
+
+</html>
